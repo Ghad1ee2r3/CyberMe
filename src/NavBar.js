@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { logout } from "./redux/actions";
-import Logout from "./components/Logout";
+import { logout } from "./redux/actions/authentication";
+import Logout from "./Components/Logout";
 
 const NavBar = ({ user, logout }) => (
   <>
