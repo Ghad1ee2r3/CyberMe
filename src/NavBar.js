@@ -8,7 +8,7 @@ const NavBar = ({ user, logout }) => (
   <>
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="#">
-        ARTIC
+        CyberMe
       </a>
       <button
         className="navbar-toggler"
