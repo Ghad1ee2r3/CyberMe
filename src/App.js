@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-import Profile from "./Components/Home";
+import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import NavBar from "./NavBar";
@@ -13,7 +13,7 @@ function App() {
       <NavBar />
       <Switch>
         <Route path="/home/">
-          <home />
+          <Home />
         </Route>
         <Redirect exact from="/logout" to="/login" />
         <Route path="/signup">
