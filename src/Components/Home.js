@@ -1,20 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { fetchWebsites } from "../redux/actions";
 
-const Home = ({ website }) => {
-  const [query, setQuery] = useState("");
+const Home = (props) => {
+  const [cardId, setCardId] = useState(0); //enter card number by user
+  const handleChange = (event) => {
+    setCardId(event.target.value);
+  };
 
-  // send one item from list to display in card
-  //   const productCards = filteredProduct().map((product) => (
-  //     <ProductCard key={product.id} product={product} />
-  //   ));
+  const handleOnclick = (event) => {
+    event.preventDefault();
+
+    props.fetchWebsites(cardId);
+  };
+  var numberOfwebsit = 1;
+  // send one website name from list to display in (row table)
+  const websitenames = props.websites.leaks.map((website) => (
+    <tr>
+      <th scope="row">{numberOfwebsit++}</th>
+      <td>{website}</td>
+    </tr>
+  ));
 
   return (
     <>
       <div class="card ">
         <div class="card-header">Featured</div>
         <div class="card-body">
-          <h5 class="card-title">Special title </h5>
+          <h5 class="card-title">title </h5>
           <p>choose cheack</p>
           <div class="form-check">
             <input
@@ -42,8 +55,12 @@ const Home = ({ website }) => {
           <div class="input-group mb-3">
             <input
               type="text"
+              id="cardId"
+              value={cardId}
+              name="username"
+              placeholder="cardId"
+              onChange={handleChange}
               class="form-control"
-              placeholder="Card num"
               aria-label="Card number or email"
               aria-describedby="button-addon2"
             />
@@ -51,6 +68,7 @@ const Home = ({ website }) => {
               class="btn btn-outline-secondary"
               type="button"
               id="button-addon2"
+              onClick={handleOnclick}
             >
               Button
             </button>
@@ -62,26 +80,15 @@ const Home = ({ website }) => {
                 <th scope="col">website name</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-              </tr>
-            </tbody>
+            <tbody>{websitenames}</tbody>
           </table>
           <a href="#" class="btn btn-primary">
             Go login to see ways to protect your card or emails
           </a>
         </div>
-        <div class="card-footer text-muted">total of attack</div>
+        <div class="card-footer text-muted">
+          total of attack : {props.websites.total}
+        </div>
       </div>
     </>
   );
@@ -91,4 +98,10 @@ const mapStateToProps = ({ websites }) => ({
   websites,
 });
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchWebsites: (cardId) => dispatch(fetchWebsites(cardId)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
