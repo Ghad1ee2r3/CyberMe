@@ -64,10 +64,10 @@ const Signup = (props) => {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-dark">
               Signup
             </button>
-            <Link to="/login" className="btn btn-link my-2 my-sm-0">
+            <Link to="/login" className="btn btn-link-dark my-2 my-sm-0">
               I already have an account
             </Link>
           </form>

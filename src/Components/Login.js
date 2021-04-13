@@ -53,10 +53,10 @@ const Login = (props) => {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-dark">
               Login
             </button>
-            <Link to="/signup" className="btn btn-link my-2 my-sm-0">
+            <Link to="/signup" className="btn btn-link-dark my-2 my-sm-0">
               Signup for an account
             </Link>
           </form>
