@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "./redux/actions/authentication";
-import Logout from "./Components/Logout";
 import Logo from "./images/logo-200L.png"
 
 const NavBar = ({ user, logout }) => (

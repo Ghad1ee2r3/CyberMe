@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { fetchWebsites } from "../redux/actions";
 
@@ -15,12 +15,17 @@ const Home = (props) => {
   };
   var numberOfwebsit = 1;
   // send one website name from list to display in (row table)
-  const websitenames = props.websites.leaks.map((website) => (
-    <tr>
-      <th scope="row">{numberOfwebsit++}</th>
-      <td>{website}</td>
-    </tr>
-  ));
+    const websitenames = props.websites.leaks?.map((website) => (
+      <tr>
+        <th scope="row">{numberOfwebsit++}</th>
+        <td>
+          <a href={website}>
+          {website}
+          </a>
+          </td>
+      </tr>
+    ));
+  
 
   return (
     <>
@@ -51,7 +56,12 @@ const Home = (props) => {
               Search
             </button>
           </div>
-          <table className="table">
+          {props.websites.error? 
+          ( 
+            <p className="text-danger">{ props.websites.error }</p> 
+            )
+            : (
+              <table className="table">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -60,11 +70,9 @@ const Home = (props) => {
             </thead>
             <tbody>{websitenames}</tbody>
           </table>
-          {/* <Link to="/login" className="btn btn-outline-dark">
-            Go login to see ways to protect your card or emails
-          </Link> */}
+            )}
         </div>
-        <div class="card-footer text-muted">
+        <div className="card-footer text-muted">
           total: {props.websites.total}
         </div>
       </div>
