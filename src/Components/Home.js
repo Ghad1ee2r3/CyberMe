@@ -24,56 +24,34 @@ const Home = (props) => {
 
   return (
     <>
-      <div class="card ">
-        <div class="card-header">Featured</div>
-        <div class="card-body">
-          <h5 class="card-title">title </h5>
-          <p>choose cheack</p>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
-            />
-            <label class="form-check-label" for="flexRadioDefault1">
-              Email
-            </label>
-          </div>
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault2"
-              checked
-            />
-            <label class="form-check-label" for="flexRadioDefault2">
-              Card number
-            </label>
-          </div>
-          <div class="input-group mb-3">
+      <div className="mx-auto">
+      <div className="card my-5">
+        <div className="card-body">
+          <h1 className="card-title my-5">Monitor your card Info </h1>
+          <div className="row mb-3 my-5">
             <input
               type="text"
               id="cardId"
               value={cardId}
               name="username"
-              placeholder="cardId"
+              className="form-control col-9 ml-3"
+              placeholder="Enter your card number ..."
               onChange={handleChange}
-              class="form-control"
+
               aria-label="Card number or email"
               aria-describedby="button-addon2"
             />
+            
             <button
-              class="btn btn-outline-secondary"
+              className="btn btn-dark col-2 ml-5"
               type="button"
               id="button-addon2"
               onClick={handleOnclick}
             >
-              Button
+              Search
             </button>
           </div>
-          <table class="table">
+          <table className="table">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -82,14 +60,16 @@ const Home = (props) => {
             </thead>
             <tbody>{websitenames}</tbody>
           </table>
-          <a href="#" class="btn btn-primary">
+          {/* <Link to="/login" className="btn btn-outline-dark">
             Go login to see ways to protect your card or emails
-          </a>
+          </Link> */}
         </div>
         <div class="card-footer text-muted">
-          total of attack : {props.websites.total}
+          total: {props.websites.total}
         </div>
       </div>
+    </div>
+      
     </>
   );
 };
